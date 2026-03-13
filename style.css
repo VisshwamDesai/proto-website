@@ -1,0 +1,283 @@
+/* =========================================
+   1. GLOBAL STYLES (Applies to all devices)
+   ========================================= */
+:root {
+    --bg-color: #f7f9fc; /* Very light, soft off-white/blue */
+    --surface-color: #ffffff;
+    --text-main: #333333; /* Dark gray for good readability */
+    --text-muted: #666666;
+    --accent-primary: #a7f3d0; /* Soft, bright mint green */
+    --accent-secondary: #bef264; /* Soft lime green */
+    --accent-tertiary: #a5f3fc; /* Bright sky blue */
+    --card-shadow: 0 10px 30px rgba(0,0,0,0.03);
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+h1, h2, h3 { letter-spacing: -1px; line-height: 1.1; font-weight: 800; }
+
+.tech-text {
+    font-family: monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+    display: block;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.pill-btn {
+    display: inline-block;
+    background: #333; /* Use a dark color for contrast on pastels */
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+    transition: opacity 0.2s;
+}
+
+.pill-btn:hover { opacity: 0.8; }
+
+.tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.7);
+    color: var(--text-main);
+    font-size: 13px;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 20px;
+    margin-right: 5px;
+    margin-bottom: 15px;
+}
+
+/* =========================================
+   2. HEADER & NAVIGATION
+   ========================================= */
+.nav-wrapper {
+    position: sticky;
+    top: 20px;
+    z-index: 100;
+    margin-bottom: 40px;
+}
+
+.navbar {
+    background: var(--surface-color);
+    border-radius: 50px;
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+}
+
+.logo-text {
+    font-size: 20px;
+    font-weight: 900;
+    text-decoration: none;
+    color: var(--text-main);
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: all 0.2s ease;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    background: var(--bg-color);
+    color: var(--text-main);
+}
+
+/* =========================================
+   3. HOME PAGE: ASYMMETRICAL GRID
+   ========================================= */
+.home-collage-grid {
+    display: grid;
+    grid-template-columns: 2fr 1.2fr; /* Prominent left panel, stacked right panels */
+    gap: 30px;
+}
+
+/* Base Panel Style for both pages */
+.collage-panel {
+    border-radius: 30px;
+    padding: 40px;
+    box-shadow: var(--card-shadow);
+}
+
+/* Main Left Panel */
+.panel-main-hero {
+    grid-row: span 2; /* Spans both rows in the 2-column layout */
+    background-color: var(--accent-primary); /* Soft mint green */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px;
+}
+
+/* Your prominent logo element */
+.hero-logo-large {
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 30px;
+    letter-spacing: -1px;
+}
+
+.panel-main-hero h1 { font-size: 70px; margin: 0 0 20px 0; letter-spacing: -3px; }
+.panel-main-hero p { font-size: 20px; color: #444; max-width: 450px; }
+
+/* Right-side Stacked Panels */
+.stacked-panels {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.panel-secondary-blue { background-color: var(--accent-tertiary); }
+.panel-secondary-blue h2 { font-size: 30px; margin-top: 0; }
+
+.panel-secondary-green { background-color: var(--accent-secondary); }
+.panel-secondary-green h3 { font-size: 22px; margin-top: 0; }
+
+/* =========================================
+   4. ABOUT PAGE: MINIMAL GRID
+   ========================================= */
+.about-minimal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    background: var(--surface-color);
+    border-radius: 40px;
+    padding: 60px;
+    box-shadow: var(--card-shadow);
+}
+
+/* =========================================
+   5. MOBILE APP LAYOUT (Pixel 9a)
+   ========================================= */
+@media (max-width: 800px) {
+    
+    /* 1. Transform Nav into a Bottom "App" Bar */
+    .nav-wrapper {
+        top: auto;
+        bottom: 0;
+        position: fixed;
+        width: 100%;
+        margin-bottom: 0;
+    }
+    
+    .navbar {
+        border-radius: 0;
+        padding: 15px 10px;
+        box-shadow: 0 -5px 20px rgba(0,0,0,0.02);
+        justify-content: center;
+    }
+
+    .logo-text { display: none; }
+    
+    .nav-links {
+        width: 100%;
+        justify-content: space-around;
+        gap: 0;
+    }
+    
+    .nav-links a { margin: 0; font-size: 13px; padding: 10px 15px; }
+
+    body { padding-bottom: 80px; } /* Prevent content hiding behind nav */
+
+    /* 2. Stack the Home Grid */
+    .home-collage-grid { grid-template-columns: 1fr; }
+    
+    .panel-main-hero { grid-row: auto; padding: 40px 30px; }
+    .hero-logo-large { font-size: 24px; margin-bottom: 20px; }
+    .panel-main-hero h1 { font-size: 45px; }
+
+    /* 3. Stack the About Grid */
+    .about-minimal-grid { grid-template-columns: 1fr; padding: 40px; }
+}
+
+
+/* =========================================
+   6. PRODUCT PAGE (Pastel Collage)
+   ========================================= */
+.custom-lab-banner {
+    background-color: var(--accent-tertiary); /* Sky blue */
+    border-radius: 40px;
+    padding: 50px 40px;
+    margin-bottom: 40px;
+    box-shadow: var(--card-shadow);
+    text-align: center;
+}
+
+.custom-lab-banner h2 { font-size: 36px; margin-top: 0; }
+
+/* The asymmetrical grid to match the reference */
+.products-collage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.product-panel {
+    border-radius: 40px;
+    padding: 40px;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Specific shapes for the collage */
+.product-large {
+    grid-column: span 2; /* Stretches all the way across */
+    background-color: var(--accent-primary); /* Mint */
+}
+
+.product-tall {
+    background-color: var(--surface-color);
+    grid-row: span 2; /* Stretches downwards */
+}
+
+.product-square {
+    background-color: var(--accent-secondary); /* Lime */
+}
+
+.product-square-light {
+    background-color: var(--surface-color);
+}
+
+.product-panel h3 { font-size: 32px; margin-top: 0; margin-bottom: 15px;}
+
+/* Mobile stacking */
+@media (max-width: 800px) {
+    .products-collage-grid { grid-template-columns: 1fr; }
+    .product-large, .product-tall { grid-column: span 1; grid-row: span 1; }
+    .custom-lab-banner { padding: 40px 25px; }
+}
